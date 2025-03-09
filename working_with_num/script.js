@@ -36,3 +36,43 @@ console.log(x);
 x = Number.MIN_VALUE;
 console.log(x);
 
+
+// Math opporator: 
+
+let a; 
+
+a = Math.sqrt(9);
+
+console.log(a);
+
+a = Math.abs(-5);
+ 
+console.log(a);
+
+a = Math.round(4.2); 
+
+console.log(a);
+
+// With the ceil method it will always round up no mater the value. 
+
+a = Math.ceil(4.2);
+
+console.log(a);
+//
+a = Math.floor(4.7); 
+console.log(a);
+
+a = Math.pow(2, 3);
+console.log(a);
+
+a = Math.min(4,5,1);
+console.log(a);
+
+a = Math.max(4, 5, 2);
+console.log(a);
+
+a = Math.floor(Math.random() * 10  +  1);
+
+console.log(a);
+
+
