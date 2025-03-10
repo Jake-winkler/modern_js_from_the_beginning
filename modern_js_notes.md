@@ -362,6 +362,150 @@ x = date.toLocaleDateString('default', {
 console.log(x);
 ```
 
+## Section 2: 
+### Arrays and Objects
+
+#### Array's: 
+- they are special type of objects and a data structure in Javascrip that stores multiple values. 
+
+```javascript
+const arr = [345, 345,322,234];
+```
+
+The main thing to keep in mind with arrays are they are zero based.  So the first item in the array will start with 0 and go up from there.  
+
+Here is a bunch of examples: 
+
+```javascript
+let x;
+// array literal
+const numbers = [12, 45, 33, 29, 39]; 
+
+console.log(numbers);
+// array constructor
+
+const fruits = new Array ('apple', 'grape', 'orange');
+console.log(fruits);
+
+
+x = numbers[0];
+
+x = numbers[0] + numbers[3];
+
+x = `My favorite fruit is an ${fruits[2]}`;
+
+x = numbers.length; 
+
+fruits [2] = 'pear'
+
+fruits[3] ='strawberries';
+
+fruits[fruits.length] = 'blueberry';
+fruits[fruits.length] = 'peach';
+
+x = fruits;
+
+console.log(x);
+
+
+// mixed 
+
+const mixed = ['string', 123, true];
+```
+
+### Array Methods: 
+
+There are hundreds of examples of built in methods that can be added on to arrays.  The key is that they are there to make your life easier.  You are just going to have to do research to find the right one you are looking for.  
+- Also keep in mind that you can chain methods together and add them onto arrays. 
+
+```javascript
+// Array Methods: 
+
+let b; 
+
+const arr = [34, 55, 23, 56, 13, 95];
+
+// arr.push(100);
+
+// arr.pop(); 
+
+// arr.unshift(99);
+
+// arr.shift();
+
+// arr.reverse();
+
+b = arr.includes(95);
+
+// if you pass something in that is not in the array it will return -1
+b = arr.indexOf(56);
+
+b = arr.slice(1, 4);
+
+// b = arr.splice(1, 4);
+
+// b = arr.splice(3, 1);
+
+// example showing you can chain on additional methods. 
+b = arr.splice(1, 4).reverse().toString().charAt(0);
+
+console.log(arr);
+
+console.log(b);
+
+```
+
+### Nesting, Concatenation, and Spread Operator: 
+
+- Nesting: 
+    - This is just meaning that you have an array within an array.  So an array as an index of another array. 
+
+- concatenating - adding the items from one array into another arary to make 1 larger array. 
+
+- the spread operator is simply ...
+
+```javascript
+let c;
+
+const treeFruit = ['apple', 'pear', 'orange'];
+const berries = ['strawberry', 'blueberry', 'rasberry']; 
+
+// treeFruit.push(berries);
+
+// c= treeFruit[3][1];
+
+const allFruits = [treeFruit, berries];
+
+c = allFruits[1][0];
+
+c = fruits.concat(berries);
+
+// spread Operator (...)
+
+c = [...fruits, ...berries];
+
+// flatten arrays
+
+const nestArr = [1, 2, [3, 4], 5, [6, 7], 8];
+
+c = nestArr.flat();
+
+// static methods on array object: 
+
+c = Array.isArray(treeFruit)
+
+c = Array.from('12345');
+
+const a = 1;
+const d= 2;
+const e = 3;
+
+c = Array.of(a,d,e)
+
+console.log(c);
+```
+
+
 
 
 
