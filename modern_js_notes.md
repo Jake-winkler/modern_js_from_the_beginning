@@ -505,12 +505,6 @@ c = Array.of(a,d,e)
 console.log(c);
 ```
 
+### Object Literal: 
 
-
-
-
-
-
-
-
-
+- These are just key value pairs. 
