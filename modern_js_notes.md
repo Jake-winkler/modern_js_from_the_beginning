@@ -507,4 +507,240 @@ console.log(c);
 
 ### Object Literal: 
 
-- These are just key value pairs. 
+- These are just key value pairs.  
+- You can also nest objects inside of objects. 
+- You can also nest arrays inside of object.  You can also nest objects inside of arrays. 
+- you can add methods to objects.  These are simply just functions that live inside an object that can be called and refereced elsewhere throughout the project.  
+```javascript
+let x;
+
+const person = {
+    name: 'John Doe',
+    age: 30, 
+    isAdmin: true,
+    address: {
+        street: '123 Main St',
+        city: 'Boston',
+        state: 'MA'
+    },
+    hobbies: ['music', 'sports']
+};
+
+x = person.name;
+
+x = person['age'];
+
+x = person.address.state;
+x = person.hobbies[0];
+
+person.name = 'Jane Doe';
+
+x = person;
+
+person.isAdmin = false; 
+
+delete person.age;
+
+x=person
+
+person.hasChildren = true;
+
+person.greet = function () {
+    console.log(`Hello, my name is ${this.name}`);
+};
+
+x = person.greet();
+console.log(x);
+
+```
+
+#### Spread Operator and Methods that can  be used on objects.
+
+- This allows you to have 2 different objects and have a 3rd object and include the properties of the other 2 objects. The Key point is it takes the properties not the entire object. 
+
+```javascript
+// 
+const todo = {};
+todo.id = 1;
+x = todo;
+
+console.log(x);
+
+// the above is the same as what is shown below.  Just 2 different ways to contruct an object
+
+const todoTwo = new Object();
+
+todoTwo.id = 1; 
+todo.name = 'Buy Milk';
+todo.completed = false;
+
+console.log(todoTwo);
+
+
+const person = {
+    address: {
+        coords: {
+            lat: 42.9384,
+            lng: -71.3232
+        }
+    }
+}
+
+x = person.address.coords.lat;
+console.log(x);
+
+const obj1 = {
+    a: 1,
+    b:2
+};
+
+const obj2 = {
+    c:3, 
+    d:4
+};
+// example of the spread operator. 
+const obj3 = {...obj1, obj2};
+
+x = obj3;
+console.log(x);
+
+//When you create an object this way and then pass in objects for example it will take just those properties from the passed in objects. 
+//meaning it wont be a nested object.  
+const obj4 = Object.assign({}, obj1, obj2);
+
+// in JS its very common to be workinig with arrays of objects. 
+const todos = [{id: 1, name: 'buy milk'},
+    {id: 2, name: 'Pickup kids from school'},
+    {id: 3, name: 'Take out trash'},
+    {id: 4, name: 'pay bills'}
+];
+
+x = todos[0].name;
+
+x = Object.keys(todo);
+
+// the below will allow you log out the Keys of an object inside of an array. 
+x = Object.keys(todo);
+//this will allow you to get the length of the object. 
+// you cant call .length on the object directly so you have to do funny stuff
+//to get the length of the object. 
+x= Object.keys(todo).length;
+// this will log out the values of the object and not the Keys. 
+x = Object.values(todo);
+// this will log out an array of arrays containing the key value pairs. 
+x = Object.entries(todo);
+//This will log a boolean that checks if there is a property matching term passed in. 
+x = todo.hasOwnProperty('name');
+
+console.log(x);
+```
+
+### Destructuring and Naming: 
+
+- this is the ability to take values in an array or object and easily access the values within. 
+
+```javascript
+const firstName = 'John';
+const lastName = 'Doe';
+const age = 30;
+
+// const person = {
+//     firstName: firstName, 
+//     lastName: lastName,
+//     age: 30
+// }; 
+
+// the above can be formatted like the below
+//as long as the keys match the variable names this works. 
+// you wont have to write out the key value pairs. 
+const person = {
+    firstName, 
+    lastName,
+    age
+};
+
+console.log(person.age);
+
+// Destructuring: 
+
+const todo = {
+    id: 1, 
+    title: 'Take out trash', 
+    user: {
+        name: 'John'
+    },
+}; 
+
+const {id: todoId, 
+    title, 
+    user: {name},} = todo;
+
+console.log(todoId);
+
+// showing destructuring Arrays. 
+const number = [ 23, 67, 33, 49, 52]
+
+const [first, second, ...rest] = number;
+
+console.log(first, second, rest);
+```
+
+## JSON
+
+- Javascript Object Notation
+
+- lightway way to send and recieve data. 
+
+- the most common things you will use when it comes to JSON is stringify and parse. 
+    - stringify turnes a js object into json
+    - parse task json and parses it into a JS object that can be used in the program 
+
+```javascript
+const post = {
+    id: 1,
+    title: 'Post One',
+    body: 'This is the body',
+};
+
+// the below will onver the obje literal above to json 
+//the below is what you would send to a server if you are sending data to a server
+//stringify will allow you to store things in local storage. 
+const str = JSON.stringify(post);
+
+// Parse JSON; 
+
+const obj = JSON.parse(str);
+
+const posts = [
+    {
+        id: 1,
+        title: 'Post One',
+        body: 'This is the body',
+    },
+    {
+        id: 2,
+        title: 'Post Two',
+        body: 'This is the body',
+    }
+];
+
+const str2 = JSON.stringify(posts);
+
+console.log(str2);
+
+```
+
+example JSON file
+
+```json
+[
+    {
+        "id": "1", 
+        "title": "Take out trash"
+    }
+]
+```
+
+
+
+
