@@ -741,6 +741,316 @@ example JSON file
 ]
 ```
 
+## Functions: 
+
+- a function is a way to have a specific block of code that can perform a certain task and then be referenced throughout the project. 
+
+- you can pass in simple data types as arguments to functions but you can also pass in arrays and objects.  Youcan also set default behavior for when a function gets called but an argument is not given. 
+
+```javascript
+//the below is called declaring a function
+function sayHello(){ 
+    console.log('Hello world');
+}
+
+//the below is called evoking a function
+sayHello();
+
+// num1 and num 2 are the parameters. 
+function add (num1, num2) {
+    console.log(num1 + num2);
+}
+
+//the 4 and 2 are called arguments. 
+add (4, 2);
+
+function subtract (num1, num2){
+    return num1 - num2; 
+///the below wont run cause its after the return. When return is seen it exits the function. 
+    console.log('test');
+};
+
+const result = subtract(10, 2);
+
+console.log(result, subtract(20,5));
+
+//user is in local scope and not visible to rest of program. 
+function registerUser(user = 'Bot') {
+
+    // if(!user){
+    //     user = 'Bot';
+    // }
+    return user + ' is registered';
+}
+
+console.log(registerUser('John'));
+// using the default value "Bot". 
+console.log(registerUser());
+
+// Rest Params
+
+function sum(...numbers){
+    let total= 0;
+
+    for(const num of numbers){
+        total += num;
+    }
+    return total;
+}
+
+console.log(sum(1, 2, 3, 5, 6, 7, 78, 8, 89));
+
+//objects as params 
+
+function loginUser(user){
+    return `The user ${user.name} with the user id of ${user.id} is logged in`;
+}
+
+const user = {
+    id: 1, 
+    name: 'John'
+}; 
+
+console.log(loginUser(user));
+
+console.log({id: 2, name: 'Sara'});
+
+// Arrays as prams: 
+
+//when passing in the ..."rest" operator will turn the passed in argument to an array
+function getRandom (...arr) {
+    const randomIndex = Math.floor(Math.random() * arr.length); 
+
+    const item = arr[randomIndex];
+
+    console.log(item);
+
+}
+getRandom(1,2,3,4,4,2,2,2);
+```
+
+### scope: 
+
+- global scope: everything is accessible anywhere in the project. 
+
+- Function scope is where you have declared a variable inside of a function.  That vaiable is only going to be acessible inside the function.  But the function will also have access to the global variables. 
+
+
+- Block Scope: 
+    - This is the theory where your variables such as const and let will only be accessible within the {} they are declared in.  
+    - Var is different in that it is not block scoped so if you delcare a var in a for loop or if statement its still globally accessible.  
+        - Key difference here though is with var if  its declared in a function then its not a global as its function scoped.  Pre es6 this was how variables worked in JS but they added let and const later to follow same princibles as other languages where they are block scoped. 
+
+- Nested Scope: 
+    - this is the principle that if you have nested items the child item's variables will have access to the parents variables but the partents will not have access to the child variables. 
+
+```javascript
+//the below is called declaring a function
+function sayHello(){ 
+    console.log('Hello world');
+}
+
+//the below is called evoking a function
+sayHello();
+
+// num1 and num 2 are the parameters. 
+function add (num1, num2) {
+    console.log(num1 + num2);
+}
+
+//the 4 and 2 are called arguments. 
+add (4, 2);
+
+function subtract (num1, num2){
+    return num1 - num2; 
+///the below wont run cause its after the return. When return is seen it exits the function. 
+    console.log('test');
+};
+
+const result = subtract(10, 2);
+
+console.log(result, subtract(20,5));
+
+//user is in local scope and not visible to rest of program. 
+function registerUser(user = 'Bot') {
+
+    // if(!user){
+    //     user = 'Bot';
+    // }
+    return user + ' is registered';
+}
+
+console.log(registerUser('John'));
+// using the default value "Bot". 
+console.log(registerUser());
+
+// Rest Params
+
+function sum(...numbers){
+    let total= 0;
+
+    for(const num of numbers){
+        total += num;
+    }
+    return total;
+}
+
+console.log(sum(1, 2, 3, 5, 6, 7, 78, 8, 89));
+
+//objects as params 
+
+function loginUser(user){
+    return `The user ${user.name} with the user id of ${user.id} is logged in`;
+}
+
+const user = {
+    id: 1, 
+    name: 'John'
+}; 
+
+console.log(loginUser(user));
+
+console.log({id: 2, name: 'Sara'});
+
+// Arrays as prams: 
+
+//when passing in the ..."rest" operator will turn the passed in argument to an array
+function getRandom (...arr) {
+    const randomIndex = Math.floor(Math.random() * arr.length); 
+
+    const item = arr[randomIndex];
+
+    console.log(item);
+
+}
+getRandom(1,2,3,4,4,2,2,2);
+
+// scope: 
+const x = 100;
+console.log(window.innerWidth);
+console.log(x, 'in global');
+
+function run(){
+    console.log(window.innerHeight);
+    console.log(x, 'in function');
+}
+
+run();
+
+if (true){
+    console.log(x, 'in block');
+    
+}
+//this is call variable shadowing
+//the x in the scope of the function is overriding the global x 
+//x is in the local scope of the function. 
+function add(){
+    const x = 1
+    const y = 50; 
+    console.log(y);
+}
+//if you want to access Y you have to be in the funciton; 
+add();
+
+
+
+// const a = 100
+
+if (true) {
+    const y = 200; 
+    console.log(x + y);
+}
+
+// console.log(x+y);
+
+for (let i = 0; i <=10; i++){
+console.log(i);
+}; 
+
+
+// console.log(i);
+
+if (true){
+    const a = 500; 
+    let b = 600;
+    var c = 700;
+
+}
+// you can access var becuase its not block scoped where as let and const are block scoped. 
+console.log(c);
+
+// var is fuction scoped though. 
+
+function run (){
+    var d = 100; 
+    console.log(d);
+}
+
+run();
+
+// console.log(d);
+
+const foo = 1; 
+var bar = 2; 
+
+// when you create a global object with var it gets added to the window object.  Which most of the time you are not going to want you global varibables on the window object. 
+
+//nested scope: 
+// you can access any varibables in the parent scope but you cant do the reverse. 
+// meaning the parent function cant access the variables in its child. 
+function first() {
+    const x = 100; 
+
+    function second() {
+        const y = 200; 
+        console.log(x + y);
+    }
+
+    second();
+}
+
+first();
+
+// another example showing that you dont have access to child variables when declared with let and const because of block scope. 
+if(true) {
+    const x = 100; 
+
+    if(x === 100){
+        const y = 200; 
+        console.log(x + y);
+    }
+    // console.log(y);
+}
+```
+
+Declaration vs Expression.  Also showing arrow runctions. 
+- basically when you declare a function declaritively with the function key word it gets picked up when the interpreters first sees the program.  Allowing you to have say a console.log of the return from the function before the function is actually declared in the programe and it work and net error out.  Allows you to if you want declare all the functions at the end of the program.  Not really recommended though.  
+
+- with expression functions.  you declare the function inside of a variable declaration.  There for you cant use the function until after you have actually declared it.  
+
+### Immediately Invoked Function Expression: 
+
+- this allows you to create a function and then immediately invoke the function. 
+
+- this avoids global scope pollution. 
+
+This is commonly used where if you pull in javascript from another developer and it is using a variable name you also wanted to use.  You can create an iffe in your script with the same variable name and not have issues since your variable is in the scope of your IFFE. 
+
+ ```javascript
+ 
+(function(){
+    const user = 'Jon';
+console.log(user); 
+const hello = () => console.log('Hello from the IIFE');
+hello();
+})();
+
+(function (name){
+console.log('Hello ' + name)})('Shawn'); 
+
+
+
+```
 
 
 
