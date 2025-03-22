@@ -1052,5 +1052,34 @@ console.log('Hello ' + name)})('Shawn');
 
 ```
 
+### Execution Context: 
+
+- special environment that is created by the javascript engine thats in the browser. or if nodeJS the v8engine. 
+- when the progame starts the initial creating is the global execution context that is created for the span of the program.  Aids in the execution of the code. 
+- everytime  you invoke a function that will have its own execution context that last the span of the function. 
+
+- JS is a single thread of language. 
+- code is executed line by line 
+- also is syncronus. 
+
+2 phases: 
+- Memory creation phase 
+    - does not execute the code 
+    - creates the global object
+        - browser this is called window. 
+    - creates the this object and binds it to the global object. 
+    - setup memory heap for variables and functions. 
+    - set the value to all values of variables to undifined. 
+- execution phase
+    - Execute code line by line
+    - create a new execution context for each function call 
+
+## the call stack 
+
+- a stack is a datastructure 
+    - operates in last in first out. LIFO
+- Call stack is a manager of execution context. 
+
+
 
 
