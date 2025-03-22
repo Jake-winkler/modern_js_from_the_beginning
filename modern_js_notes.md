@@ -702,7 +702,7 @@ const post = {
     body: 'This is the body',
 };
 
-// the below will onver the obje literal above to json 
+// the below will conver the obje literal above to json 
 //the below is what you would send to a server if you are sending data to a server
 //stringify will allow you to store things in local storage. 
 const str = JSON.stringify(post);
