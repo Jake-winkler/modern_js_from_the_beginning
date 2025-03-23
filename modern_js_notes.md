@@ -1203,6 +1203,247 @@ switch (true) {
 }
 ```
 
+## Truthy and Falsey: 
+
+- If you pass something into an if statement then that variable will get coerced into a boolean value.  
+
+The following are 6 falsy values: 
+- Falsy Values: 
+    - false: 
+    - 0
+    - "" or '' (empty String)
+    - null 
+    - undefined
+    - NaN 
+
+- Anything else that isn't the above will evaluate to truthy. 
+
+Examples of truthy values: 
+- true
+- '0' in a string
+- ' ' space in a string 
+- 'false' in a string 
+- [] empty array
+- {} empty object
+- function () {} Empty function 
+
+```javascript
+// Falsy Values: 
+// - false: 
+// - 0
+// - "" or '' (empty String)
+// - null 
+// - undefined
+// - NaN 
+
+const x = []; 
+if(x){
+    console.log('This is truthy');
+} else{
+    console.log('This is Falsy');
+}
+
+console.log(Boolean(x));
+
+// truthy and falsy caveats: 
+
+const children = 0; 
+// when evaluating the number 0 in the example we had to state NOT UNDEFINED
+//because 0 gets treated as false.  that way A zero for this question gets treated correctly. 
+if(children !== undefined){
+    console.log(`You have ${children} children`);
+}else{
+    console.log('Please enter number of Children');
+}
+
+
+//checking for empty arrays: 
+
+const posts = [];
+
+//the below is needed to handle the scenario of an empty array 
+if(posts.length > 0){
+    console.log('List Posts');
+} else{
+    console.log('No to list Posts');
+}
+
+// checking for empty objects: 
+
+const user = {
+    name: 'Brad'
+};
+
+if (Object.keys(user).length > 0){
+    console.log('list user');
+}else{
+    console.log('No User');
+}
+
+// Lose equality (==)
+console.log(false === 0);
+console.log('' === 0);
+console.log(null === undefined);
+
+```
+
+## Logical Operators: 
+
+used when writing if statments to help control flow. think of it as || and && and ??. 
+
+```javascript
+console.log(10 > 20 && 30 > 15);
+
+// the above will be false cause everything in the above needs to evalute to true. 
+
+console.log(10 > 20 || 30 > 15);
+
+// since one is true this will return true. 
+
+// && - will return first false value or the last value. 
+let a; 
+
+a = 10 && 20;
+a = 10 && 20 && 30 ;
+a = 10 && 0 && 30 ;
+a = 10 && '' && 0 && 30 ; 
+
+console.log(a);
+
+
+const posts = []; 
+
+posts.length > 0 && console.log(posts[0]);
+
+
+// || Will return the first truthy value or the last value. 
+
+let b; 
+
+b = 10 || 20; 
+b = 0 || 20; 
+b = 0 || null || "";
+b = 0 || null || '' || undefined; 
+console.log(b);
+
+
+// ?? Nullish coelesing operator.  Returns the rightside operand when the left is null or undefined. 
+
+let c ; 
+
+c = 10 ?? 20 ; 
+
+c = null ?? 20; 
+c = undefined ?? 30; 
+c = 0 ?? 20 ; 
+c = '' ?? 30;
+
+
+
+console.log(c);
+```
+
+### Logical Assignment operators: 
+- see examples below.  Not currently sure how I would use the below.  but good to know it exists. 
+
+```javascript 
+// ||= assigned the right side value only if the left is a falsy value 
+
+let e = false; 
+
+if(!e){
+    e = 10; 
+}
+
+e = e || 10; 
+
+e ||= 10; 
+
+console.log(e);
+
+// &&= assigns the right side value only if the left is a truthy value 
+
+let d = 10; 
+
+if(d){
+    d = 20;
+}
+
+console.log(d);
+
+
+// ??= Assigned the right ide value only if the left is null or undefined. 
+
+let f = null; 
+
+if(f ===null || f === undefined){
+    f = 30; 
+}
+
+f = f ?? 20; 
+
+c ??= 20; 
+
+console.log(f);
+
+```
+
+
+## Ternary Operator: 
+- shorter way of writing a conditional 
+
+examples below. 
+
+```javascript
+const age = 19; 
+
+// useing an if statement 
+
+if (age >= 18){
+    console.log('You can vote');
+} else {
+    console.log('You can not vote');
+}
+// using a ternary operator 
+
+// think of the ? as the IF.  the first part following the ? is what happens
+// if the check is true.  anything after : is the else portion and what happens when check is false. 
+age >= 18 ? console.log('You can vote') : console.log('You cannot vote');
+
+// assigning a conditional value to a variable. 
+
+const canVote = age >= 18 ? true : false ; 
+const canVote2 = age >= 18 ? 'You can Vote' : 'You cannot vote' ; 
+
+console.log(canVote);
+console.log(canVote2);
+
+const auth = true; 
+
+// let redirect; 
+
+// if(auth){
+//     alert('Welcome to the dashboard'); 
+//     redirect = '/dashboard';
+// } else {
+//     alert('access denied');
+//     redirect = '/login'; 
+// }; 
+
+// console.log(redirect);
+
+ 
+// const redirect = auth ? (alert('Welcome to the dashboard'), '/dashboard') : (alert('Access Denied'), '/login'); 
+
+// console.log(redirect);
+
+auth ? console.log('Welcom to the dashboard') : null;
+
+auth && console.log('Welcome to the dashboard');
+
+```
+
+
 
 
 
