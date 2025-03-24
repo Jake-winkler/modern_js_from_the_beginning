@@ -1443,6 +1443,88 @@ auth && console.log('Welcome to the dashboard');
 
 ```
 
+## For Loops. 
+
+- what is a loop: 
+    - a control structure that allows you to continue doing a certain task until a certain condition is met. 
+
+example syntax: 
+```javascript
+for([initialExpression]; [conditionExpression]; [incrementExpression]){
+};
+
+```
+
+```javascript
+
+// for(let i = 0; i <= 10; i++){
+//     if(i === 7){
+//         console.log('7 is my lucky number');
+//     }else {
+//         console.log('Number ' + i);
+//     }
+// };
+
+// // nested loops
+
+// for(let i = 1; i <=10; i++){
+//     console.log('Number ' + i);
+
+//     for (let j = 1; j <= 10; j++){
+//         console.log(`${i} * ${j}`);
+//     }
+// }
+
+// Loop through an Array: 
+
+const names = ['Brad', 'Sam', 'sara', 'john', 'tim'];
+
+for(let i = 0; i < names.length; i++){
+    if(names[i] === 'sara'){
+        console.log(`${names[i]} is the best`);
+    }else {
+        console.log(names[i]);
+    }
+};
+
+```
+
+## break and continue: 
+break will stop the entire loop from finishing out once a condition is met. 
+
+continue just skips part of the loop if a condition is met then continues on. 
+
+```javascript
+// // break
+
+// for( let i = 0; i <= 20; i++){
+//     if(i ===15){
+//         console.log('breaking...');
+//         break;
+//     }
+//     console.log(i);
+// };
+
+
+//continue
+
+for(let i = 0; i <= 20; i++){
+    if(i === 13){
+        console.log('skipping 13...');
+        continue;
+    }
+    
+    console.log(i);
+}
+```
+
+## While and Do While Loops: 
+
+
+
+
+
+
 
 
 
