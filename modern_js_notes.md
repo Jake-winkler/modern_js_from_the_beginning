@@ -1568,6 +1568,83 @@ do {
 }while(i <=20);
 ```
 
+## For Of Loops: 
+
+- This is a much clearner way of looping through a interatable item. Such as array and maps. 
+
+```javascript
+const items = ['book', 'table', 'chair', 'kite'];
+const users = [
+    {name: 'Brad'},
+    {name: 'Kate'},
+    {name: 'Steve'}
+];
+//The below is how you loop through a arrar with a for loop
+// for (let i = 0; i < item.length; i++){
+//     console.log(item[i]);
+// };
+
+
+// the below is the newer way of looping through a array using a for Of loop. 
+
+for(const item of items){
+    console.log(item);
+} 
+
+for (const user of users){
+    console.log(user.name);
+}
+
+// Loop over strings
+
+const str = 'Hello World'; 
+
+for(const letter of str){
+    console.log(letter);
+}
+
+//Loop over maps
+
+const map = new Map();
+
+map.set('name', 'John')
+map.set('age', 30); 
+
+for (const [key, value] of map){
+    console.log(key, value);
+}
+```
+## For In Loops: 
+
+```javascript
+const colorObj = {
+    color1: 'Red',
+    color2: 'blue',
+    color3: 'orange',
+    color4: 'green'
+};
+
+for (const key in colorObj){
+    console.log(key, colorObj[key]);
+}
+
+const colorArr = ['red', 'green', 'blue', 'yellow']; 
+
+for (const key in colorArr){
+    console.log(colorArr[key]);
+}
+```
+
+## Array methods: 
+
+- high order array methods: 
+    - they all work in similar fashion in that they take in a function. 
+        - this is called a callback function. 
+
+you can chain multiple methods together it doesn't have to be just .map. 
+
+
+
 
 
 
