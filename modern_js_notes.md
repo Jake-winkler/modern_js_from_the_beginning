@@ -1644,14 +1644,48 @@ for (const key in colorArr){
 you can chain multiple methods together it doesn't have to be just .map. 
 
 
+## Document Object Model: 
+
+- programming interface for web/html elements
+- structure that we can interact with via javascript
+- includes tags, attributes text nodes, etc.
+- Represented as a tree structure. 
+
+- The DOM is represented as a tree structure: 
+
+ - you can access the window in the code 
+ 
+
+```javascript
+console.log(window.document); 
+
+/// will log out the html file with the document element. 
+
+console.dir(window.document); 
+// will show with methods within document.
 
 
+console.log(document.body) 
 
 
+console.log(document.links[0]);
 
+// document.body.innerHTML = '<h1>Hello World';
 
+// console.log(document.body);
 
+console.log(document.getElementById('main'));
 
+const main = document.getElementById('main');
+// main.innerHTML = '<h1>Hello from main';
+
+document.querySelector('#main h1').innerText = 'hello';
+
+```
+
+- the Dom is what contains all the HTML or sctructure from the webpage.  This can be dynamically updated and changed in javascript. 
+    - can be done by using selectors to get to the element wanted  and then update or change by using innerText 
+- can also add dynamically additional elements. 
 
 
 
