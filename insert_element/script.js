@@ -41,8 +41,8 @@ function insertBeforeItem(){
 
 insertElement();
 insertText();
-insertHTML();
-insertBeforeItem();
+// insertHTML();
+// insertBeforeItem();
 /*
 <!-- beforebegin --->
 <p>
