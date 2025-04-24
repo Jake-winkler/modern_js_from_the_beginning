@@ -2290,6 +2290,18 @@ function run(){
 document.querySelector('button').onclick = run;
 ```
 
+## Events 
+- Actions that the user takes to make things happen on the webpage. 
 
+## Event listeners: 
+- These are actions that occur in your system that your code can listen for and react to.  This makes your pages dynamic. 
 
+ex: 
+- keyboard
+- webpage load
+- clicking 
+- mouse down
+- dragging
+- resizing
 
+- just about anything is an event. 
