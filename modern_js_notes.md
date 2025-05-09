@@ -2305,3 +2305,8 @@ ex:
 - resizing
 
 - just about anything is an event. 
+
+
+## mouse events: 
+```javascript
+
