@@ -2669,5 +2669,6 @@ itemInput.addEventListener('blur', onBlur);
 
 ```
 
-
+## form submission: 
+- when working with a backend system you submission is going to have an action tag that submits to a backend file. 
 
