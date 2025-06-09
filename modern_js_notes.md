@@ -2672,3 +2672,104 @@ itemInput.addEventListener('blur', onBlur);
 ## form submission: 
 - when working with a backend system you submission is going to have an action tag that submits to a backend file. 
 
+```javascript
+const form = document.getElementById('item-form');
+
+function onSubmit(e) {
+    e.preventDefault();
+
+    const item = document.getElementById('item-input').value;
+    const priority = document.getElementById('priority-input').value;
+
+    if(item === '' || priority === '0'){
+        alert('Please fill in all fields');
+        return;
+    }
+
+    console.log(item, priority);
+}
+
+function onSubmit2(e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    // const item = formData.get('item');
+    // const priority = formData.get('priority');
+
+    // console.log(item,priority);
+
+    const entries = formData.entries();
+    // console.log(entries);
+
+    for (let entry of entries){
+        console.log(entry[1]);
+    }
+
+}
+
+
+form.addEventListener('submit', onSubmit2);
+```
+
+## Event Bubbling
+
+- when you add and event listener to an element that even moves up the dom tree.  
+
+This is when you have a parent and a child element that has the same event tied to them.  If you for example trigger the child element events then you will also trigger the parents event. 
+
+Can you the stop propegation method in the event to stop triggering the parent event.  
+- this should only be used when you are in the scenario of a parent to child with the same handeler. 
+```javascript
+const button = document.querySelector('form button');
+const div = document.querySelector('form div:nth-child(2)')
+const form = document.querySelector('form');
+
+//In this case if you trigger the button event as coded below.  The click even will bubble up 
+// this means when the button was clicked it will also trigger the click even for the parent element 
+//only when the parents have click events.
+
+button.addEventListener('click', (e) => {
+    alert('button was clicked');
+    //can be used to stop the triggering of the parent elements when they also have the same event handler. 
+    
+    e.stopPropagation();
+})
+
+div.addEventListener('click', () => {
+    alert('div was clicked');
+})
+
+form.addEventListener('click', () => {
+    alert('form was clicked');
+});
+
+document.body.addEventListener('click', () => {
+    alert('body was clicked');
+});
+
+```
+
+## Event Delegation and multiple events: 
+
+
+
+```javascript
+//event delegation. 
+
+const listItems = document.querySelectorAll('li');
+const list = document.querySelector('ul');
+
+// listItems.forEach((item) => {
+//     item.addEventListener('click', (e) => {
+//         e.target.remove();
+//     });
+// });
+
+
+list.addEventListener('click', (e) => {
+    if(e.target.tagName === 'LI'){
+        e.target.style.color = 'red';
+    };
+})
+```
+
