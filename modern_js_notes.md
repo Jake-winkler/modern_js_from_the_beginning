@@ -2773,3 +2773,7 @@ list.addEventListener('click', (e) => {
 })
 ```
 
+## Page loading and window events: 
+
+
+
