@@ -2832,6 +2832,16 @@ window.addEventListener('blur', () =>{
 
 ```
 
+## What is local storage vs. session storage: 
+- property on the 'window' interface that allows us to access a storage object.  
+- Data is stored in the browser 
+- Data is stored as key/value paries and values are strings(cannot store objects)
 
+LocalStorage and sessionStorage have the same API.  The difference is that localStorage does not expire, while sessionStorage only lasts until the page is closed.  
 
+localStorage.setItem('name', 'Brad');  // sets a value with a key
+
+localStorage.getItem('name');          //Get a value using the key
+localStorage.removeItem('name');       //Remove Item using the key
+localStorage.clear();                  //clear all values
 
