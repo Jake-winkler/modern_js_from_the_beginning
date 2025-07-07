@@ -2845,3 +2845,35 @@ localStorage.getItem('name');          //Get a value using the key
 localStorage.removeItem('name');       //Remove Item using the key
 localStorage.clear();                  //clear all values
 
+## Asynchronus JavaScript
+ - at its chore Javascript is syncronous. But there are some web API's and things that can be done to make it asyncronus 
+ - it is single threaded. 
+     - each line of code is executed at a single time.  
+ 
+
+### Thread of Execution: 
+-  This is the single thread of execution.  A Sequential flow of control 
+- javascript is a synchronous language with asyncronous capabilities 
+- a thread has a call stack and memory. 
+
+ex: the second console log can only happen when the first is done. 
+
+
+### Asynchronus Javascript:
+
+- How Async Javascript works: 
+
+Async js items we already know and use: 
+- DOM API
+- setTimeout()
+- setInterval()
+- ajax
+- fetch()
+
+for example the setTieout() and setInterval are available in the window object.  But they are not built in the the js language.  They are built add ons. 
+
+promises 
+- example fetch
+- they dont get put on the standard que 
+- get put on the microstask que (promise jobs); 
+    - higher priority than standard task que. 
