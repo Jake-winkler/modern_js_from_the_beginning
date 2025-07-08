@@ -2877,3 +2877,31 @@ promises
 - they dont get put on the standard que 
 - get put on the microstask que (promise jobs); 
     - higher priority than standard task que. 
+
+
+## setTimeout and clearTimeout functions: 
+
+- When you use setTimeout it will get put on the task que and waits for the que to clear before it gets ran.  This is why even if you put the 0 it will still execute everything ele first before the function in the callback of setTimeout. 
+
+- When using clearTimeout you have to use the timerID to be able to cancel a timeout if needed. 
+
+
+```javascript
+// setTimeout(changeText, 2000);
+
+
+const changeText = () => {
+    document.querySelector('h1').textContent = 'Hello from callback';
+} 
+
+const timerId = setTimeout(changeText, 3000);
+
+
+document.querySelector('#cancel').addEventListener('click', () => {
+    console.log(timerId);
+    clearTimeout(timerId);
+    console.log('timer cancelled');
+});
+```
+
+
