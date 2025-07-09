@@ -2950,3 +2950,7 @@ document.getElementById('stop').addEventListener('click', stopChange);
 
 ```
 
+
+## callback: 
+- How to implement our won function that takes in a callback. 
+
