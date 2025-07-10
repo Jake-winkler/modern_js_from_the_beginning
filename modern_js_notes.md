@@ -2954,3 +2954,78 @@ document.getElementById('stop').addEventListener('click', stopChange);
 ## callback: 
 - How to implement our won function that takes in a callback. 
 
+```javascript
+// function toggle(e){
+//     e.target.classList.toggle('danger');
+// }
+
+// document.querySelector('button').addEventListener('click', toggle)
+
+
+//custom example 
+//note just cause you use a call back.  That doesn't mean its always asyncronous. 
+
+const posts = [
+    {
+        title: 'Post one', body: 'this is the body'
+    },
+    {
+        title: 'Post two', body: 'this is the body'
+    }
+];
+
+function createPost(post, cb){
+    setTimeout(() => {
+        posts.push(post);
+        cb();
+    }, 2000)
+}
+
+ function getPosts(){
+    setTimeout(() => {
+        posts.forEach(function (post){
+            const div = document.createElement('div'); 
+            div.innerHTML = `<strong>${post.title}</strong> - ${post.body}`;
+            document.querySelector('#posts').appendChild(div);
+        })
+    }, 1000);
+ }
+
+ createPost({title: 'Post Three', body: 'this is post 3'}, getPosts)
+ 
+```
+
+### AJAX
+
+```javascript
+const xhr = new XMLHttpRequest();
+
+xhr.open('GET', 'https://api.github.com/users/Jake-Winkler/repos');
+// xhr.open('GET', './movies.json');
+
+//readyState has 5 possible values
+// 0: request not initialized 
+// 1: server connection established 
+// 2: request recieved
+// 3: processing request 
+// 4: request finished and response is ready 
+
+xhr.onreadystatechange = function (){
+    if (this.readyState === 4 && this.status === 200){
+        // console.log(JSON.parse(this.responseText));
+
+        const data = JSON.parse(this.responseText);
+
+        data.forEach(repo => {
+            const li = document.createElement('li');
+            li.innerHTML=`<strong>${repo.name}</strong> - ${repo.description}`;
+            document.querySelector('#results').appendChild(li); 
+        });
+    }
+}
+
+
+xhr.send();  
+```
+
+
