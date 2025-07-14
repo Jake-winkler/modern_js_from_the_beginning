@@ -3069,4 +3069,99 @@ getData('./movies.json', (data) => {
 
     - aysyncronus and non-blocking 
     - can help prevent call back hell 
-- 
+
+```javascript
+//to create a promise
+const promise = new Promise((resolve,reject) => {
+    //do some async task 
+    setTimeout(() => {
+        console.log('asynct task complete');
+        resolve();
+    }, 1000)
+});
+
+// promise.then(() => {
+//     console.log('promise consumed');
+// });
+
+const getUser = new Promise((resolve,reject) => {
+    setTimeout(() => {
+        let error = true; 
+
+        if(!error){
+            resolve({name: 'John', age: 30});   
+        } else {
+            reject('error: something went wrong');
+        }
+
+        
+    }, 1000);
+});
+
+getUser
+.then((user) => console.log(user))
+.catch((error) => console.log(error))
+.finally(() => console.log('The promise has been resolved or rejected'));  
+
+console.log('hello from global scope.');
+```
+
+- The following is examples where we refactored the code down into using a promise. 
+
+```javascript
+// function toggle(e){
+//     e.target.classList.toggle('danger');
+// }
+
+// document.querySelector('button').addEventListener('click', toggle)
+
+
+//custom example 
+//note just cause you use a call back.  That doesn't mean its always asyncronous. 
+
+const posts = [
+    {
+        title: 'Post one', body: 'this is the body'
+    },
+    {
+        title: 'Post two', body: 'this is the body'
+    }
+];
+
+function createPost(post){
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+        let error = true; 
+        if(!error){
+        posts.push(post);
+        resolve();
+        } else {
+            reject('Something went wrong');
+        }
+
+    }, 2000)
+    })
+}
+
+ function getPosts(){
+    setTimeout(() => {
+        posts.forEach(function (post){
+            const div = document.createElement('div'); 
+            div.innerHTML = `<strong>${post.title}</strong> - ${post.body}`;
+            document.querySelector('#posts').appendChild(div);
+        })
+    }, 1000);
+ }
+
+ function showError(error){
+    const h3 = document.createElement('h3');
+    h3.innerHTML = `<strong>${error}</strong>`;
+    document.getElementById('posts').appendChild(h3);
+ }
+
+ createPost({title: 'Post Three', body: 'this is post 3'})
+ .then(getPosts)
+ .catch(showError);
+```
+
+
