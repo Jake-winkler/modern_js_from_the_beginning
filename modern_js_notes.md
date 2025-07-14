@@ -3063,3 +3063,10 @@ getData('./movies.json', (data) => {
 ```
 
 
+## Promises: 
+
+- this is concept where a "Promise" is made tot he script that says hey I will finish this keep going on executing the rest of the program.  
+
+    - aysyncronus and non-blocking 
+    - can help prevent call back hell 
+- 
