@@ -3249,7 +3249,73 @@ getData('./movies.json').then((movies) => {
 
 ## Promise all 
 
+```javascript
 
 
+function getData(endpoint) {
+    return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+
+    xhr.open('GET', endpoint);
+
+    xhr.onreadystatechange = function () {
+        if (this.readyState === 4){
+            if(this.status === 200){
+             resolve(JSON.parse(this.responseText));
+
+            }else {
+                reject ('Something went wrong');
+            }
+        }
+    };
+
+        setTimeout(() => {
+            xhr.send();
+        }, Math.floor(Math.random() * 3000) + 1000);
+
+        });
+
+}
+
+
+const moviesPromise = getData('./movies.json');
+const actorsPromise = getData('./actors.json');
+const directorsPromise = getData('./directors.json');
+
+const dummyPromise = new Promise((resolve, reject) => {
+    resolve('Hello World')
+});
+
+Promise.all([moviesPromise, actorsPromise, directorsPromise, dummyPromise])
+.then((data) => {
+    console.log(data);
+})
+.catch((error) => console.log(error));
+
+
+```
+
+## Fetch API Async Await
+
+- this is the more modern way to make server requests rather than the .thn syntax shown above. 
+
+```javascript
+fetch('./movies.json')
+.then(response => response.json())
+.then((data) => console.log(data))
+
+
+//fetching a textFile 
+// this is uncommon 
+fetch('./test.txt')
+.then(response => response.text())
+.then((data) => console.log(data))
+
+//usually this is used to fetch from data from an api. 
+
+fetch('https://api.github.com/users/jake-winkler')
+.then(response => response.json())
+.then((data) => (document.querySelector('h1').textContent = data.login))
+```
 
 
