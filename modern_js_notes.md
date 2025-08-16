@@ -3319,3 +3319,11 @@ fetch('https://api.github.com/users/jake-winkler')
 ```
 
 
+## Fetch Options - Method, Body headers
+
+- if you want to make anything other than a get request you have to specify the request as the method in the options.  Then you can add a headers option to specify custom headers
+
+
+rest apis usually have crud. Creat, Read, Update, Delete endpoints. 
+
+
